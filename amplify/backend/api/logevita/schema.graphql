@@ -1,0 +1,8 @@
+type Protocol @model {
+  id: ID!
+  symptom: String!
+  meal: String
+  drink: String
+  herb: String
+  ritual: String
+}

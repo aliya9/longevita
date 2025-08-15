@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-logevita-dev-ce6c2-authRole",
+      "UnauthRoleArn": "arn:aws:iam::695129423513:role/amplify-logevita-dev-ce6c2-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::695129423513:role/amplify-logevita-dev-ce6c2-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-logevita-dev-ce6c2-deployment",
+      "UnauthRoleName": "amplify-logevita-dev-ce6c2-unauthRole",
+      "StackName": "amplify-logevita-dev-ce6c2",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:695129423513:stack/amplify-logevita-dev-ce6c2/bba58360-79ea-11f0-8adf-0636dc317bfd",
+      "AmplifyAppId": "dthr0nhcnfajp"
+    },
+    "categories": {
+      "auth": {
+        "logevita156bb26e": {}
+      },
+      "api": {
+        "logevita": {}
+      }
+    }
+  }
+}
