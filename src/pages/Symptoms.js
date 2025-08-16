@@ -49,7 +49,7 @@ export default function Symptoms() {
       setLoading(true);
       setError('');
       await client.graphql({
-        query: createProtocol,
+      query: createProtocol,
         variables: { 
           input: { 
             symptom: symptom.trim(),
@@ -62,7 +62,7 @@ export default function Symptoms() {
       });
       
       // Clear form
-      setSymptom('');
+    setSymptom('');
       setMeal('');
       setDrink('');
       setHerb('');
@@ -117,7 +117,7 @@ export default function Symptoms() {
           }
         });
         setEditingId(null);
-        fetchProtocols();
+    fetchProtocols();
       } catch (err) {
         setError('Failed to update protocol: ' + err.message);
       } finally {
@@ -148,11 +148,11 @@ export default function Symptoms() {
         <div className="form-grid">
           <div className="form-group">
             <label htmlFor="symptom">Symptom/Condition *</label>
-            <input
+      <input
               id="symptom"
               type="text"
-              value={symptom}
-              onChange={(e) => setSymptom(e.target.value)}
+        value={symptom}
+        onChange={(e) => setSymptom(e.target.value)}
               placeholder="e.g., Headache, Fatigue, Insomnia"
               className="form-input"
             />

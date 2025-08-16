@@ -67,19 +67,21 @@ const Navigation = ({ user, signOut }) => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="mobile-menu-button"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-        >
-          <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}></span>
-        </button>
+                       {/* Mobile Menu Button */}
+               <button
+                 className="mobile-menu-button"
+                 onClick={toggleMobileMenu}
+                 aria-label="Toggle mobile menu"
+                 aria-expanded={isMobileMenuOpen}
+                 aria-controls="mobile-menu"
+               >
+                 <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}></span>
+               </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="mobile-menu animate-slide-in">
+                   {/* Mobile Menu */}
+             {isMobileMenuOpen && (
+               <div id="mobile-menu" className="mobile-menu animate-slide-in" role="navigation" aria-label="Mobile navigation">
           <ul className="mobile-nav-menu">
             {navItems.map((item) => (
               <li key={item.path}>

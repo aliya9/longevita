@@ -138,13 +138,22 @@ const Home = () => {
       <div className="wellness-section">
         <h2>Choose Your Focus Area</h2>
         <div className="wellness-grid">
-          {wellnessCards.map((card) => (
-            <div
-              key={card.id}
-              className="wellness-card"
-              style={{ '--card-color': card.color }}
-              onClick={() => handleCardClick(card)}
-            >
+                           {wellnessCards.map((card) => (
+                   <div
+                     key={card.id}
+                     className="wellness-card interactive"
+                     style={{ '--card-color': card.color }}
+                     onClick={() => handleCardClick(card)}
+                     onKeyDown={(e) => {
+                       if (e.key === 'Enter' || e.key === ' ') {
+                         e.preventDefault();
+                         handleCardClick(card);
+                       }
+                     }}
+                     tabIndex={0}
+                     role="button"
+                     aria-label={`Get wellness suggestions for ${card.title}`}
+                   >
               <div className="card-icon">{card.icon}</div>
               <h3>{card.title}</h3>
               <p>{card.description}</p>
@@ -210,52 +219,52 @@ const Home = () => {
       {/* Quick Actions */}
       <div className="quick-actions">
         <h2>Quick Actions</h2>
-        <div className="actions-grid">
-          <button className="action-card">
-            <span className="action-icon">📝</span>
-            <span>Log Today's Meals</span>
-          </button>
-          <button className="action-card">
-            <span className="action-icon">🧘</span>
-            <span>Start Meditation</span>
-          </button>
-          <button className="action-card">
-            <span className="action-icon">💧</span>
-            <span>Track Water Intake</span>
-          </button>
-          <button className="action-card">
-            <span className="action-icon">🌿</span>
-            <span>View Protocols</span>
-          </button>
-        </div>
+                       <div className="actions-grid">
+                 <button className="action-card interactive" aria-label="Log today's meals">
+                   <span className="action-icon">📝</span>
+                   <span>Log Today's Meals</span>
+                 </button>
+                 <button className="action-card interactive" aria-label="Start meditation session">
+                   <span className="action-icon">🧘</span>
+                   <span>Start Meditation</span>
+                 </button>
+                 <button className="action-card interactive" aria-label="Track water intake">
+                   <span className="action-icon">💧</span>
+                   <span>Track Water Intake</span>
+                 </button>
+                 <button className="action-card interactive" aria-label="View wellness protocols">
+                   <span className="action-icon">🌿</span>
+                   <span>View Protocols</span>
+                 </button>
+               </div>
       </div>
 
       {/* Progress Summary */}
       <div className="progress-summary">
         <h2>Your Wellness Journey</h2>
-        <div className="progress-cards">
-          <div className="progress-card">
-            <div className="progress-icon">📊</div>
-            <div className="progress-info">
-              <h4>7 Day Streak</h4>
-              <p>Keep up the great work!</p>
-            </div>
-          </div>
-          <div className="progress-card">
-            <div className="progress-icon">🎯</div>
-            <div className="progress-info">
-              <h4>5 Goals Set</h4>
-              <p>3 completed this week</p>
-            </div>
-          </div>
-          <div className="progress-card">
-            <div className="progress-icon">🌟</div>
-            <div className="progress-info">
-              <h4>Wellness Score</h4>
-              <p>85/100 - Excellent!</p>
-            </div>
-          </div>
-        </div>
+                       <div className="progress-cards">
+                 <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View streak details">
+                   <div className="progress-icon">📊</div>
+                   <div className="progress-info">
+                     <h4>7 Day Streak</h4>
+                     <p>Keep up the great work!</p>
+                   </div>
+                 </div>
+                 <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View goals progress">
+                   <div className="progress-icon">🎯</div>
+                   <div className="progress-info">
+                     <h4>5 Goals Set</h4>
+                     <p>3 completed this week</p>
+                   </div>
+                 </div>
+                 <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View wellness score details">
+                   <div className="progress-icon">🌟</div>
+                   <div className="progress-info">
+                     <h4>Wellness Score</h4>
+                     <p>85/100 - Excellent!</p>
+                   </div>
+                 </div>
+               </div>
       </div>
     </div>
   );

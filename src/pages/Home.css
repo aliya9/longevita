@@ -79,10 +79,18 @@
   background: var(--card-color);
 }
 
-.wellness-card:hover {
+.wellness-card:hover,
+.wellness-card:focus {
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
   border-color: var(--card-color);
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
+}
+
+.wellness-card:focus {
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
 }
 
 .card-icon {
@@ -266,10 +274,18 @@
   text-align: center;
 }
 
-.action-card:hover {
+.action-card:hover,
+.action-card:focus {
   border-color: var(--soft-green);
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
+}
+
+.action-card:focus {
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
 }
 
 .action-icon {
@@ -310,9 +326,17 @@
   transition: all var(--transition-normal);
 }
 
-.progress-card:hover {
+.progress-card:hover,
+.progress-card:focus {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
+}
+
+.progress-card:focus {
+  outline: 2px solid var(--serenity-blue);
+  outline-offset: 2px;
 }
 
 .progress-icon {

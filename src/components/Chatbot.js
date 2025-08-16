@@ -98,12 +98,14 @@ const Chatbot = () => {
             </button>
           </div>
 
-          <div className="chatbot-messages">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`message ${message.type === 'user' ? 'user' : 'bot'}`}
-              >
+                           <div className="chatbot-messages" role="log" aria-live="polite" aria-label="Chat messages">
+                   {messages.map((message) => (
+                     <div
+                       key={message.id}
+                       className={`message ${message.type === 'user' ? 'user' : 'bot'}`}
+                       role="article"
+                       aria-label={`${message.type === 'user' ? 'You' : 'Bot'} message`}
+                     >
                 <div className="message-content">
                   {message.content}
                 </div>

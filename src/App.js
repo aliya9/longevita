@@ -1,27 +1,73 @@
 import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import { getCurrentUser, signOut } from 'aws-amplify/auth';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import awsExports from './aws-exports.js';
 import Navigation from './components/Navigation';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
-import Symptoms from './pages/Symptoms';
+import Journal from './pages/Journal';
+import Community from './pages/Community';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
+import Authentication from './components/Authentication';
 import './styles/design-system.css';
 import './App.css';
 
 Amplify.configure(awsExports);
 
-function App({ signOut, user }) {
+function App() {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    checkAuthState();
+  }, []);
+
+  const checkAuthState = async () => {
+    try {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    } catch (error) {
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      setUser(null);
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Loading Longevita...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Authentication onSignIn={checkAuthState} />;
+  }
+
   return (
     <Router>
       <div className="app">
-        <Navigation user={user} signOut={signOut} />
+        <Navigation user={user} signOut={handleSignOut} />
         
         <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/journal" element={<Symptoms />} />
+            <Route path="/journal" element={<Journal />} />
             <Route path="/community" element={<Community />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
@@ -32,51 +78,11 @@ function App({ signOut, user }) {
         <Chatbot />
         
         <footer className="app-footer">
-          <p>&copy; 2024 Longevita. Empowering your wellness journey.</p>
+          <p>&copy; 2025 Longevita. Empowering your wellness journey.</p>
         </footer>
       </div>
     </Router>
   );
 }
 
-// Placeholder components for other screens
-const Community = () => (
-  <div className="page-container">
-    <div className="page-header">
-      <h1>👥 Community</h1>
-      <p>Connect with fellow wellness enthusiasts</p>
-    </div>
-    <div className="content-placeholder">
-      <h2>Community Features Coming Soon</h2>
-      <p>Share experiences, join discussions, and support each other on your wellness journey.</p>
-    </div>
-  </div>
-);
-
-const Profile = () => (
-  <div className="page-container">
-    <div className="page-header">
-      <h1>👤 Profile</h1>
-      <p>Manage your wellness profile and preferences</p>
-    </div>
-    <div className="content-placeholder">
-      <h2>Profile Management Coming Soon</h2>
-      <p>Track your progress, set goals, and customize your wellness experience.</p>
-    </div>
-  </div>
-);
-
-const Settings = () => (
-  <div className="page-container">
-    <div className="page-header">
-      <h1>⚙️ Settings</h1>
-      <p>Customize your Longevita experience</p>
-    </div>
-    <div className="content-placeholder">
-      <h2>Settings Coming Soon</h2>
-      <p>Configure notifications, privacy settings, and app preferences.</p>
-    </div>
-  </div>
-);
-
-export default withAuthenticator(App);
+export default App;
