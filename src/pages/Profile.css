@@ -456,3 +456,126 @@
     font-size: 2rem;
   }
 }
+
+/* Samsung Galaxy S8+ Specific Optimizations (360x740) */
+@media (max-width: 360px) {
+  .profile-content {
+    padding: 0 10px;
+  }
+
+  .profile-header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .profile-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .profile-header p {
+    font-size: 0.9rem;
+  }
+
+  .avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .profile-stats {
+    gap: 15px;
+  }
+
+  .stat-item {
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .profile-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .profile-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .tab-navigation {
+    gap: 10px;
+  }
+
+  .tab-button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+
+  .info-grid {
+    gap: 15px;
+  }
+
+  .info-item label {
+    font-size: 0.9rem;
+  }
+
+  .info-item input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .preferences-grid {
+    gap: 15px;
+  }
+
+  .preference-item {
+    padding: 15px;
+  }
+
+  .preference-item h3 {
+    font-size: 1rem;
+  }
+
+  .preference-item p {
+    font-size: 0.85rem;
+  }
+
+  .progress-charts {
+    gap: 15px;
+  }
+
+  .chart-placeholder {
+    padding: 15px;
+  }
+
+  .chart-placeholder h3 {
+    font-size: 1rem;
+  }
+
+  .chart-placeholder p {
+    font-size: 0.8rem;
+  }
+
+  .trend-indicator {
+    padding: 12px 0;
+  }
+
+  .trend-indicator span {
+    font-size: 1rem;
+  }
+
+  .trend-indicator p {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

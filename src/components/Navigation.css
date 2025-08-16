@@ -297,3 +297,39 @@
     font-size: var(--font-size-xl);
   }
 }
+
+/* Samsung Galaxy S8+ Specific Optimizations (360x740) */
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 0 var(--space-2);
+    height: 60px;
+  }
+  
+  .nav-brand {
+    font-size: var(--font-size-sm);
+    gap: var(--space-1);
+  }
+  
+  .nav-logo {
+    font-size: var(--font-size-lg);
+  }
+  
+  .mobile-menu-button {
+    padding: var(--space-1);
+  }
+  
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    width: 20px;
+    height: 2px;
+  }
+  
+  .hamburger::before {
+    top: -6px;
+  }
+  
+  .hamburger::after {
+    bottom: -6px;
+  }
+}

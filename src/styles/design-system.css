@@ -709,3 +709,24 @@ h6, .h6 {
     font-size: var(--font-size-sm);
   }
 }
+
+/* Samsung Galaxy S8+ Specific Optimizations (360x740) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 var(--space-2);
+  }
+  
+  .text-responsive {
+    font-size: var(--font-size-xs);
+  }
+  
+  .btn {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+  
+  .input {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+}

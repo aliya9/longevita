@@ -387,6 +387,54 @@
   }
 }
 
+/* Samsung Galaxy S8+ Specific Optimizations (360x740) */
+@media (max-width: 360px) {
+  .auth-container {
+    padding: 12px;
+  }
+  
+  .auth-card {
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+
+  .auth-logo {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .logo-icon {
+    font-size: 1.75rem;
+  }
+
+  .auth-logo h1 {
+    font-size: 1.25rem;
+  }
+
+  .auth-header h2 {
+    font-size: 1.125rem;
+  }
+  
+  .auth-header p {
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .auth-submit {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+  
+  .btn-social {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+}
+
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .auth-container {

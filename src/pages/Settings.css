@@ -341,3 +341,105 @@
     min-width: 120px;
   }
 }
+
+/* Samsung Galaxy S8+ Specific Optimizations (360x740) */
+@media (max-width: 360px) {
+  .settings-content {
+    padding: 0 10px;
+  }
+
+  .settings-header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .settings-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .settings-header p {
+    font-size: 0.9rem;
+  }
+
+  .settings-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .settings-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .tab-navigation {
+    gap: 10px;
+  }
+
+  .tab-button {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    min-width: 100px;
+  }
+
+  .setting-item {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .setting-info h3 {
+    font-size: 1rem;
+  }
+
+  .setting-info p {
+    font-size: 0.85rem;
+  }
+
+  .setting-control {
+    min-width: 100px;
+  }
+
+  .setting-select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+
+  .setting-toggle {
+    width: 40px;
+    height: 24px;
+  }
+
+  .setting-toggle::before {
+    width: 18px;
+    height: 18px;
+  }
+
+  .setting-toggle:checked::before {
+    transform: translateX(16px);
+  }
+
+  .danger-zone {
+    padding: 15px;
+  }
+
+  .danger-zone h3 {
+    font-size: 1.25rem;
+  }
+
+  .danger-zone p {
+    font-size: 0.9rem;
+  }
+
+  .danger-actions {
+    gap: 10px;
+  }
+
+  .danger-note {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
