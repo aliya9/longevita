@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   padding: var(--space-6);
   background: linear-gradient(135deg, var(--soft-green) 0%, var(--serenity-blue) 100%);
   border-radius: var(--radius-2xl);
@@ -41,24 +41,25 @@
 
 /* Wellness Section */
 .wellness-section {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .wellness-section h2 {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   text-align: center;
   color: var(--dark-slate);
+  font-size: var(--font-size-lg);
 }
 
 .wellness-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
 }
 
 .wellness-card {
   background: var(--white);
-  padding: var(--space-6);
+  padding: var(--space-4);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   cursor: pointer;
@@ -79,13 +80,10 @@
   background: var(--card-color);
 }
 
-.wellness-card:hover,
-.wellness-card:focus {
+.wellness-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
   border-color: var(--card-color);
-  outline: 2px solid var(--serenity-blue);
-  outline-offset: 2px;
 }
 
 .wellness-card:focus {
@@ -93,16 +91,29 @@
   outline-offset: 2px;
 }
 
+.wellness-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure cards return to normal state when not interacted with */
+.wellness-card {
+  border: 2px solid transparent;
+}
+
+.wellness-card:hover {
+  border-color: var(--card-color);
+}
+
 .card-icon {
-  font-size: var(--font-size-4xl);
-  margin-bottom: var(--space-4);
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-3);
   display: block;
 }
 
 .wellness-card h3 {
   margin: 0 0 var(--space-2) 0;
   color: var(--dark-slate);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -110,6 +121,7 @@
   margin: 0;
   color: var(--gray-600);
   font-size: var(--font-size-sm);
+  line-height: 1.3;
 }
 
 /* AI Suggestion Modal */
@@ -245,13 +257,14 @@
 
 /* Quick Actions */
 .quick-actions {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .quick-actions h2 {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   text-align: center;
   color: var(--dark-slate);
+  font-size: var(--font-size-lg);
 }
 
 .actions-grid {
@@ -264,7 +277,7 @@
   background: var(--white);
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
+  padding: var(--space-4);
   cursor: pointer;
   transition: all var(--transition-normal);
   display: flex;
@@ -289,7 +302,7 @@
 }
 
 .action-icon {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
 }
 
 .action-card span:last-child {
@@ -300,13 +313,14 @@
 
 /* Progress Summary */
 .progress-summary {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .progress-summary h2 {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   text-align: center;
   color: var(--dark-slate);
+  font-size: var(--font-size-lg);
 }
 
 .progress-cards {
@@ -317,7 +331,7 @@
 
 .progress-card {
   background: var(--white);
-  padding: var(--space-6);
+  padding: var(--space-4);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   display: flex;
@@ -340,9 +354,9 @@
 }
 
 .progress-icon {
-  font-size: var(--font-size-3xl);
-  width: 60px;
-  height: 60px;
+  font-size: var(--font-size-2xl);
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-full);
   background: var(--gray-100);
   display: flex;
@@ -374,6 +388,8 @@
     flex-direction: column;
     gap: var(--space-4);
     text-align: center;
+    margin-bottom: var(--space-4);
+    padding: var(--space-4);
   }
   
   .date-section .date {
@@ -381,8 +397,25 @@
   }
   
   .wellness-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-3);
+  }
+  
+  .wellness-card {
+    padding: var(--space-3);
+  }
+  
+  .card-icon {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+  }
+  
+  .wellness-card h3 {
+    font-size: var(--font-size-sm);
+  }
+  
+  .wellness-card p {
+    font-size: var(--font-size-xs);
   }
   
   .actions-grid {
@@ -396,7 +429,7 @@
 
 @media (max-width: 480px) {
   .home-header {
-    padding: var(--space-4);
+    padding: var(--space-3);
   }
   
   .welcome-section h1 {
@@ -404,7 +437,27 @@
   }
   
   .wellness-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .wellness-card {
+    padding: var(--space-3);
+  }
+  
+  .card-icon {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+  
+  .wellness-card h3 {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-1);
+  }
+  
+  .wellness-card p {
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
   }
   
   .actions-grid {
@@ -425,7 +478,7 @@
   
   .home-header {
     padding: var(--space-3);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
   }
   
   .welcome-section h1 {
@@ -440,20 +493,46 @@
     font-size: var(--font-size-sm);
   }
   
-  .wellness-grid {
-    gap: var(--space-3);
+  .wellness-section {
+    margin-bottom: var(--space-4);
   }
   
-  .wellness-card {
-    padding: var(--space-4);
-  }
-  
-  .wellness-card h3 {
+  .wellness-section h2 {
+    margin-bottom: var(--space-3);
     font-size: var(--font-size-base);
   }
   
+  .wellness-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .wellness-card {
+    padding: var(--space-3);
+  }
+  
+  .card-icon {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+  
+  .wellness-card h3 {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-1);
+  }
+  
   .wellness-card p {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+  }
+  
+  .quick-actions {
+    margin-bottom: var(--space-4);
+  }
+  
+  .quick-actions h2 {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
   }
   
   .actions-grid {
@@ -461,20 +540,33 @@
   }
   
   .action-card {
-    padding: var(--space-4);
+    padding: var(--space-3);
   }
   
   .action-icon {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+  }
+  
+  .progress-summary {
+    margin-bottom: var(--space-4);
+  }
+  
+  .progress-summary h2 {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+  
+  .progress-cards {
+    gap: var(--space-3);
   }
   
   .progress-card {
-    padding: var(--space-4);
+    padding: var(--space-3);
   }
   
   .progress-icon {
-    width: 50px;
-    height: 50px;
-    font-size: var(--font-size-2xl);
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
   }
 }
