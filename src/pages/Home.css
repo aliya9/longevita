@@ -269,7 +269,7 @@
 
 .actions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
 
@@ -420,6 +420,7 @@
   
   .actions-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
   }
   
   .progress-cards {
@@ -437,7 +438,7 @@
   }
   
   .wellness-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--space-2);
   }
   
@@ -461,7 +462,8 @@
   }
   
   .actions-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
   }
   
   .progress-card {
@@ -503,7 +505,7 @@
   }
   
   .wellness-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--space-2);
   }
   
@@ -536,6 +538,7 @@
   }
   
   .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
   }
   

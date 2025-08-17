@@ -40,7 +40,7 @@
 /* Community Stats */
 .community-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
   margin-bottom: var(--space-8);
 }
@@ -901,7 +901,7 @@
   }
   
   .community-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .stat-item {
@@ -945,6 +945,7 @@
   }
   
   .community-stats {
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-2);
   }
   
