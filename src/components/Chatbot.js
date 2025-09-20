@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useHealthRecommendations } from '../hooks/useHealthRecommendations';
 import './Chatbot.css';
 
 const Chatbot = () => {
@@ -7,53 +8,95 @@ const Chatbot = () => {
     {
       id: 1,
       type: 'bot',
-      content: 'Hello! I\'m your Longevita wellness assistant. How can I help you today? 🌿',
+      content: 'Hello! I\'m your AI-powered Longevita wellness assistant. I can help you with personalized health recommendations based on your symptoms. How can I help you today? 🌿',
       timestamp: new Date()
     }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
+  const { getRecommendations, loading, error } = useHealthRecommendations();
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || loading) return;
 
     const userMessage = {
-      id: messages.length + 1,
+      id: Date.now(),
       type: 'user',
       content: inputValue,
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentMessage = inputValue;
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponses = [
-        "That's a great question! Let me help you with that. 🌱",
-        "I understand your concern. Here's what I recommend for your wellness journey. 💚",
-        "Based on your query, I suggest focusing on natural remedies and balanced nutrition. 🥗",
-        "Remember, consistency is key to achieving your wellness goals! ✨",
-        "I'm here to support you every step of the way. What else would you like to know? 🤗"
-      ];
-
-      const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+    try {
+      // Get AI recommendations from backend
+      const recommendations = await getRecommendations(currentMessage);
       
-      const botMessage = {
-        id: messages.length + 2,
+      if (recommendations && recommendations.recommendations) {
+        // Format AI response
+        let botResponse = "Based on your symptoms, here are my recommendations:\n\n";
+        
+        recommendations.recommendations.forEach((rec, index) => {
+          botResponse += `${index + 1}. **${rec.recommendation}**\n`;
+          botResponse += `   *Why: ${rec.rationale}*\n\n`;
+        });
+
+        if (recommendations.sources && recommendations.sources.length > 0) {
+          botResponse += "📚 *Sources:*\n";
+          recommendations.sources.forEach(source => {
+            botResponse += `• ${source}\n`;
+          });
+        }
+
+        botResponse += `\n⚠️ *${recommendations.disclaimer}*`;
+
+        const botMessage = {
+          id: Date.now() + 1,
+          type: 'bot',
+          content: botResponse,
+          timestamp: new Date(),
+          recommendations: recommendations.recommendations
+        };
+
+        setMessages(prev => [...prev, botMessage]);
+      } else {
+        // Fallback response if AI fails
+        const fallbackMessage = {
+          id: Date.now() + 1,
+          type: 'bot',
+          content: "I'm having trouble connecting to my AI service right now. Please try again in a moment, or contact a healthcare professional for immediate concerns. 🔄",
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, fallbackMessage]);
+      }
+    } catch (err) {
+      console.error('Error getting AI response:', err);
+      const errorMessage = {
+        id: Date.now() + 1,
         type: 'bot',
-        content: randomResponse,
+        content: "I'm sorry, I'm having trouble processing your request right now. Please try again or consult a healthcare professional for immediate concerns. 🔄",
         timestamp: new Date()
       };
-
-      setMessages(prev => [...prev, botMessage]);
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -62,6 +105,7 @@ const Chatbot = () => {
       handleSendMessage();
     }
   };
+
 
   return (
     <>
@@ -98,16 +142,32 @@ const Chatbot = () => {
             </button>
           </div>
 
-                           <div className="chatbot-messages" role="log" aria-live="polite" aria-label="Chat messages">
-                   {messages.map((message) => (
-                     <div
-                       key={message.id}
-                       className={`message ${message.type === 'user' ? 'user' : 'bot'}`}
-                       role="article"
-                       aria-label={`${message.type === 'user' ? 'You' : 'Bot'} message`}
-                     >
+          <div className="chatbot-messages" role="log" aria-live="polite" aria-label="Chat messages">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`message ${message.type === 'user' ? 'user' : 'bot'}`}
+                role="article"
+                aria-label={`${message.type === 'user' ? 'You' : 'Bot'} message`}
+              >
                 <div className="message-content">
-                  {message.content}
+                  <div className="message-text">
+                    {message.content.split('\n').map((line, index) => {
+                      if (line.startsWith('**') && line.endsWith('**')) {
+                        return <div key={index} className="recommendation-title">{line.replace(/\*\*/g, '')}</div>;
+                      } else if (line.startsWith('   *') && line.endsWith('*')) {
+                        return <div key={index} className="recommendation-rationale">{line.replace(/\*/g, '')}</div>;
+                      } else if (line.startsWith('📚 *') || line.startsWith('⚠️ *')) {
+                        return <div key={index} className="message-section">{line.replace(/\*/g, '')}</div>;
+                      } else if (line.startsWith('• ')) {
+                        return <div key={index} className="source-item">{line}</div>;
+                      } else if (line.trim() === '') {
+                        return <br key={index} />;
+                      } else {
+                        return <div key={index}>{line}</div>;
+                      }
+                    })}
+                  </div>
                 </div>
                 <div className="message-time">
                   {message.timestamp.toLocaleTimeString([], { 
@@ -127,6 +187,8 @@ const Chatbot = () => {
                 </div>
               </div>
             )}
+            
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="chatbot-input">
@@ -135,19 +197,26 @@ const Chatbot = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder="Describe your symptoms or health concerns..."
                 rows="1"
                 className="chatbot-textarea"
+                disabled={loading}
               />
               <button
                 onClick={handleSendMessage}
-                disabled={!inputValue.trim()}
+                disabled={!inputValue.trim() || loading}
                 className="send-button"
                 aria-label="Send message"
               >
-                ➤
+                {loading ? '⏳' : '➤'}
               </button>
             </div>
+            
+            {error && (
+              <div className="chatbot-error">
+                {error}
+              </div>
+            )}
           </div>
         </div>
       )}

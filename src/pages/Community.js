@@ -7,6 +7,7 @@ export default function Community() {
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [selectedChallenge, setSelectedChallenge] = useState(null);
+  const [showNutrientModal, setShowNutrientModal] = useState(false);
 
   const discussions = [
     {
@@ -167,26 +168,6 @@ export default function Community() {
           >
             ✍️ Create Post
           </button>
-        </div>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="community-stats">
-        <div className="stat-item">
-          <span className="stat-number">2,847</span>
-          <span className="stat-label">Members</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">156</span>
-          <span className="stat-label">Active Today</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">89</span>
-          <span className="stat-label">Discussions</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-number">12</span>
-          <span className="stat-label">Challenges</span>
         </div>
       </div>
 
@@ -425,6 +406,18 @@ export default function Community() {
               <p>Curated reading list for wellness and personal growth</p>
               <button className="resource-btn">See Books</button>
             </div>
+            
+            <div className="resource-card">
+              <div className="resource-icon">🥗</div>
+              <h3>Nutrient Suggestions</h3>
+              <p>Get personalized nutrient recommendations based on your health goals</p>
+              <button 
+                className="resource-btn"
+                onClick={() => setShowNutrientModal(true)}
+              >
+                Get Suggestions
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -570,6 +563,80 @@ export default function Community() {
                 className="btn btn-primary"
               >
                 Join Challenge
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Nutrient Suggestions Modal */}
+      {showNutrientModal && (
+        <div className="modal-backdrop" onClick={() => setShowNutrientModal(false)}>
+          <div className="nutrient-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>🥗 Nutrient Suggestions</h3>
+              <button 
+                onClick={() => setShowNutrientModal(false)}
+                className="modal-close"
+                aria-label="Close nutrient modal"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="nutrient-content">
+                <p className="nutrient-intro">
+                  Based on your wellness goals, here are some personalized nutrient recommendations:
+                </p>
+                
+                <div className="nutrient-suggestions">
+                  <div className="nutrient-category">
+                    <h4>🌱 Essential Vitamins</h4>
+                    <ul>
+                      <li>Vitamin D3 - For bone health and immune support</li>
+                      <li>B-Complex - For energy and brain function</li>
+                      <li>Vitamin C - For immune system and collagen production</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="nutrient-category">
+                    <h4>💪 Important Minerals</h4>
+                    <ul>
+                      <li>Magnesium - For muscle relaxation and sleep</li>
+                      <li>Iron - For oxygen transport and energy</li>
+                      <li>Zinc - For immune function and wound healing</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="nutrient-category">
+                    <h4>🧠 Omega Fatty Acids</h4>
+                    <ul>
+                      <li>Omega-3 - For brain health and inflammation reduction</li>
+                      <li>Omega-6 - For skin health and hormone production</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="nutrient-category">
+                    <h4>🌿 Antioxidants</h4>
+                    <ul>
+                      <li>Resveratrol - For heart health and longevity</li>
+                      <li>Quercetin - For allergy relief and inflammation</li>
+                      <li>Curcumin - For joint health and cognitive function</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="nutrient-note">
+                  <p><strong>Note:</strong> Always consult with a healthcare provider before starting any new supplements.</p>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button 
+                onClick={() => setShowNutrientModal(false)}
+                className="btn btn-primary"
+              >
+                Got it!
               </button>
             </div>
           </div>

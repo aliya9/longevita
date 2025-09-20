@@ -1,0 +1,297 @@
+/* Wellness Suggestions Component Styles */
+.wellness-suggestions {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.wellness-header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.wellness-header h2 {
+  color: var(--dark-slate);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-2xl);
+}
+
+.wellness-header p {
+  color: var(--gray-600);
+  font-size: var(--font-size-base);
+}
+
+.wellness-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--gray-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.input-group label {
+  font-weight: var(--font-weight-medium);
+  color: var(--dark-slate);
+  font-size: var(--font-size-sm);
+}
+
+.symptoms-input {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color var(--transition-fast);
+}
+
+.symptoms-input:focus {
+  outline: none;
+  border-color: var(--serenity-blue);
+  box-shadow: 0 0 0 3px var(--serenity-blue-light);
+}
+
+.symptoms-input:disabled {
+  background: var(--gray-100);
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--serenity-blue);
+  color: var(--white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--serenity-blue-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--serenity-blue);
+  border: 1px solid var(--serenity-blue);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--serenity-blue-light);
+  transform: translateY(-1px);
+}
+
+.error-message {
+  background: var(--error);
+  color: var(--white);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.suggestions-section {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.suggestions-section h3 {
+  color: var(--dark-slate);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-xl);
+  text-align: center;
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.recommendation-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  transition: transform var(--transition-fast);
+}
+
+.recommendation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.recommendation-number {
+  background: var(--serenity-blue);
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+}
+
+.recommendation-title {
+  color: var(--dark-slate);
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+}
+
+.recommendation-rationale {
+  color: var(--gray-700);
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}
+
+.recommendation-category {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.category-badge {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: capitalize;
+}
+
+.category-diet {
+  background: var(--success-light);
+  color: var(--success-dark);
+}
+
+.category-lifestyle {
+  background: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+.category-health_tip {
+  background: var(--serenity-blue-light);
+  color: var(--serenity-blue-dark);
+}
+
+.sources-section {
+  background: var(--serenity-blue-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.sources-section h4 {
+  color: var(--serenity-blue-dark);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-lg);
+}
+
+.sources-list {
+  margin: 0;
+  padding-left: var(--space-4);
+}
+
+.source-item {
+  color: var(--serenity-blue-dark);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.disclaimer {
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  border-left: 4px solid var(--warning);
+}
+
+.disclaimer p {
+  color: var(--gray-700);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 360px) {
+  .wellness-suggestions {
+    padding: var(--space-3);
+  }
+  
+  .wellness-header h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .recommendation-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .recommendation-category {
+    justify-content: flex-start;
+  }
+}

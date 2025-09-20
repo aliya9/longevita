@@ -1,8 +1,7 @@
-import { Amplify } from 'aws-amplify';
-import { getCurrentUser, signOut } from 'aws-amplify/auth';
+// AWS Amplify removed
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import awsExports from './aws-exports.js';
+// aws-exports removed
 import Navigation from './components/Navigation';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
@@ -10,39 +9,16 @@ import Journal from './pages/Journal';
 import Community from './pages/Community';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
-import Authentication from './components/Authentication';
+// Authentication removed (no auth in UI-only build)
 import './styles/design-system.css';
 import './App.css';
 
-Amplify.configure(awsExports);
+// No Amplify config
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    checkAuthState();
-  }, []);
-
-  const checkAuthState = async () => {
-    try {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-    } catch (error) {
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      setUser(null);
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
+  useEffect(() => {}, []);
 
   if (isLoading) {
     return (
@@ -55,14 +31,12 @@ function App() {
     );
   }
 
-  if (!user) {
-    return <Authentication onSignIn={checkAuthState} />;
-  }
+  // Always render content (no auth)
 
   return (
     <Router>
       <div className="app">
-        <Navigation user={user} signOut={handleSignOut} />
+        <Navigation />
         
         <main className="app-main">
           <Routes>

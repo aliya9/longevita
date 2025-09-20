@@ -723,10 +723,85 @@ h6, .h6 {
   .btn {
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-sm);
+    min-height: 44px; /* Touch target size */
+  }
+  
+  .btn-sm {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xs);
+    min-height: 36px;
   }
   
   .input {
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-sm);
+    min-height: 44px; /* Touch target size */
+  }
+  
+  /* Card optimizations */
+  .card {
+    margin-bottom: var(--space-3);
+  }
+  
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: var(--space-3);
+  }
+  
+  /* Modal optimizations */
+  .modal {
+    max-width: 95vw;
+    margin: var(--space-2);
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: var(--space-3);
+  }
+  
+  /* Navigation optimizations */
+  .nav-container {
+    height: 56px;
+  }
+  
+  .nav-brand {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Typography optimizations */
+  h1, .h1 { font-size: var(--font-size-2xl); }
+  h2, .h2 { font-size: var(--font-size-xl); }
+  h3, .h3 { font-size: var(--font-size-lg); }
+  h4, .h4 { font-size: var(--font-size-base); }
+  h5, .h5 { font-size: var(--font-size-sm); }
+  h6, .h6 { font-size: var(--font-size-xs); }
+  
+  /* Spacing optimizations */
+  .m-6 { margin: var(--space-3); }
+  .m-8 { margin: var(--space-4); }
+  .p-6 { padding: var(--space-3); }
+  .p-8 { padding: var(--space-4); }
+  
+  /* Grid optimizations */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  
+  /* Chatbot button positioning */
+  .chatbot-button {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    width: 56px;
+    height: 56px;
+  }
+  
+  .chatbot-icon {
+    width: 20px;
+    height: 20px;
   }
 }

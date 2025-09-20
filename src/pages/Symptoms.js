@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Amplify } from 'aws-amplify';
-import { generateClient } from 'aws-amplify/api';
-import { createProtocol, deleteProtocol, updateProtocol } from '../graphql/mutations';
-import { listProtocols } from '../graphql/queries';
-import awsExports from '../aws-exports.js';
+// AWS Amplify removed
 import './Symptoms.css';
 
-Amplify.configure(awsExports);
+// No Amplify config
 
 export default function Symptoms() {
   const [symptom, setSymptom] = useState('');
@@ -19,7 +15,7 @@ export default function Symptoms() {
   const [error, setError] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const client = generateClient();
+  // const client = generateClient();
 
   useEffect(() => {
     fetchProtocols();
@@ -30,8 +26,7 @@ export default function Symptoms() {
     try {
       setLoading(true);
       setError('');
-      const { data } = await client.graphql({ query: listProtocols });
-      setProtocols(data.listProtocols.items || []);
+      setProtocols([]);
     } catch (err) {
       setError('Failed to load protocols: ' + err.message);
     } finally {
@@ -48,18 +43,7 @@ export default function Symptoms() {
     try {
       setLoading(true);
       setError('');
-      await client.graphql({
-      query: createProtocol,
-        variables: { 
-          input: { 
-            symptom: symptom.trim(),
-            meal: meal.trim() || null,
-            drink: drink.trim() || null,
-            herb: herb.trim() || null,
-            ritual: ritual.trim() || null
-          } 
-        }
-      });
+      // create via backend removed in UI-only mode
       
       // Clear form
     setSymptom('');
@@ -85,10 +69,7 @@ export default function Symptoms() {
     try {
       setLoading(true);
       setError('');
-      await client.graphql({
-        query: deleteProtocol,
-        variables: { input: { id } }
-      });
+      // delete via backend removed in UI-only mode
       fetchProtocols();
     } catch (err) {
       setError('Failed to delete protocol: ' + err.message);
@@ -103,19 +84,7 @@ export default function Symptoms() {
       try {
         setLoading(true);
         setError('');
-        await client.graphql({
-          query: updateProtocol,
-          variables: { 
-            input: { 
-              id: protocol.id,
-              symptom: protocol.symptom,
-              meal: protocol.meal,
-              drink: protocol.drink,
-              herb: protocol.herb,
-              ritual: protocol.ritual
-            } 
-          }
-        });
+        // update via backend removed in UI-only mode
         setEditingId(null);
     fetchProtocols();
       } catch (err) {

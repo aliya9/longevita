@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signIn, signUp, confirmSignUp, resendSignUpCode } from 'aws-amplify/auth';
+// AWS Amplify auth removed in UI-only build
 import './Authentication.css';
 
 const Authentication = ({ onSignIn }) => {

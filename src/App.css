@@ -180,34 +180,7 @@
   margin: 0 auto;
 }
 
-/* Override Amplify UI styles for better integration */
-.amplify-button {
-  border-radius: var(--radius-lg) !important;
-  font-weight: var(--font-weight-semibold) !important;
-  transition: all var(--transition-normal) !important;
-}
-
-.amplify-button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: var(--shadow-lg) !important;
-}
-
-.amplify-input {
-  border-radius: var(--radius-lg) !important;
-  border: 2px solid var(--gray-200) !important;
-  transition: all var(--transition-normal) !important;
-}
-
-.amplify-input:focus {
-  border-color: var(--serenity-blue) !important;
-  box-shadow: 0 0 0 3px rgba(163, 210, 242, 0.1) !important;
-}
-
-.amplify-card {
-  border-radius: var(--radius-xl) !important;
-  box-shadow: var(--shadow-lg) !important;
-  border: none !important;
-}
+/* Auth vendor overrides removed: no third-party auth UI present */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -268,36 +241,125 @@
 
 /* Samsung Galaxy S8+ Specific Optimizations (360x740) */
 @media (max-width: 360px) {
+  .app {
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
   .header-content {
-    padding: 10px;
+    padding: 8px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .logo-section h1 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 2px;
+  }
+  
+  .logo-section p {
+    font-size: var(--font-size-xs);
+  }
+  
+  .user-section {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .welcome-text {
+    font-size: var(--font-size-xs);
+  }
+  
+  .sign-out-button {
+    padding: 6px 12px;
+    font-size: var(--font-size-xs);
+    min-height: 36px;
   }
   
   .app-footer {
-    padding: 10px;
+    padding: 8px;
+    font-size: var(--font-size-xs);
+  }
+
+  .page-container {
+    padding: var(--space-2);
+    min-height: calc(100vh - 120px); /* Account for smaller nav and footer */
   }
 
   .page-header {
     padding: var(--space-3);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-xl);
   }
   
   .page-header h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-1);
   }
   
   .page-header p {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
   }
   
   .content-placeholder {
     padding: var(--space-3);
+    margin-bottom: var(--space-3);
   }
   
   .content-placeholder h2 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
   }
   
   .content-placeholder p {
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+  }
+  
+  /* Loading spinner optimizations */
+  .loading-spinner p {
     font-size: var(--font-size-sm);
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+  
+  /* Additional mobile optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  }
+  
+  /* Ensure proper touch targets */
+  button, 
+  .btn, 
+  .nav-link, 
+  .mobile-nav-link,
+  .action-card,
+  .wellness-card,
+  .progress-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, 
+  textarea, 
+  select {
+    font-size: 16px;
+  }
+  
+  /* Optimize scrolling */
+  .app-main {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure proper spacing for mobile */
+  .page-container {
+    padding-bottom: var(--space-4); /* Extra space for mobile navigation */
   }
 }

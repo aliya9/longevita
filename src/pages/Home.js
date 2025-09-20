@@ -243,6 +243,7 @@ const Home = () => {
         </div>
       </div>
 
+
       {/* Progress Summary */}
       <div className="progress-summary">
         <h2>Your Wellness Journey</h2>
@@ -250,22 +251,19 @@ const Home = () => {
           <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View streak details">
             <div className="progress-icon">📊</div>
             <div className="progress-info">
-              <h4>7 Day Streak</h4>
-              <p>Keep up the great work!</p>
+              <h4>7 Day Streak<br />Keep up the great work!</h4>
             </div>
           </div>
           <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View goals progress">
             <div className="progress-icon">🎯</div>
             <div className="progress-info">
-              <h4>5 Goals Set</h4>
-              <p>3 completed this week</p>
+              <h4>5 Goals Set<br />3 completed this week</h4>
             </div>
           </div>
           <div className="progress-card interactive" role="button" tabIndex={0} aria-label="View wellness score details">
             <div className="progress-icon">🌟</div>
             <div className="progress-info">
-              <h4>Wellness Score</h4>
-              <p>85/100 - Excellent!</p>
+              <h4>Wellness Score<br />85/100 - Excellent!</h4>
             </div>
           </div>
         </div>

@@ -389,4 +389,48 @@
     height: 28px;
     font-size: var(--font-size-xs);
   }
+  
+  /* AI Response Formatting */
+  .message-text {
+    line-height: 1.6;
+  }
+  
+  .recommendation-title {
+    font-weight: var(--font-weight-semibold);
+    color: var(--serenity-blue-dark);
+    margin: var(--space-2) 0 var(--space-1) 0;
+    font-size: var(--font-size-sm);
+  }
+  
+  .recommendation-rationale {
+    color: var(--gray-700);
+    font-style: italic;
+    margin-left: var(--space-3);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+  
+  .message-section {
+    font-weight: var(--font-weight-medium);
+    color: var(--dark-slate);
+    margin: var(--space-3) 0 var(--space-2) 0;
+    font-size: var(--font-size-sm);
+  }
+  
+  .source-item {
+    color: var(--gray-600);
+    margin-left: var(--space-2);
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-xs);
+  }
+  
+  .chatbot-error {
+    background: var(--error);
+    color: var(--white);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-2);
+    font-size: var(--font-size-xs);
+    text-align: center;
+  }
 }

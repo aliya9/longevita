@@ -1,0 +1,9 @@
+.app-shell { min-height: 100%; display: grid; grid-template-rows: auto 1fr auto; }
+.app-header { position: sticky; top: 0; z-index: 30; backdrop-filter: saturate(120%) blur(8px); background: rgba(8,12,22,0.6); border-bottom: 1px solid #1f2a44; }
+.app-header .container { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; }
+.app-header h1 { font-size: 18px; margin: 0; letter-spacing: 0.3px; color: #e6f6ff; }
+.app-main { padding: 24px 16px 56px; }
+.app-footer { border-top: 1px solid #1f2a44; background: rgba(8,12,22,0.5); }
+.app-footer .container { padding: 16px; color: #8796ad; font-size: 14px; }
+
+

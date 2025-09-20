@@ -460,122 +460,152 @@
 /* Samsung Galaxy S8+ Specific Optimizations (360x740) */
 @media (max-width: 360px) {
   .profile-content {
-    padding: 0 10px;
+    padding: 0 var(--space-2);
   }
 
   .profile-header {
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
   }
 
-  .profile-header h1 {
-    font-size: 1.5rem;
+  .profile-info h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-1);
   }
 
-  .profile-header p {
-    font-size: 0.9rem;
+  .profile-email {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
   }
 
   .avatar-placeholder {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    font-size: var(--font-size-lg);
   }
 
   .profile-stats {
-    gap: 15px;
+    gap: var(--space-2);
+    justify-content: center;
   }
 
   .stat-item {
-    padding: 15px;
+    padding: var(--space-2);
   }
 
-  .stat-number {
-    font-size: 1.25rem;
+  .stat-value {
+    font-size: var(--font-size-base);
   }
 
   .stat-label {
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
   }
 
   .profile-section {
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
   }
 
-  .profile-section h2 {
-    font-size: 1.25rem;
+  .profile-section h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
   }
 
   .tab-navigation {
-    gap: 10px;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
   }
 
   .tab-button {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    min-width: 100px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+    min-width: 80px;
+    flex: 1;
   }
 
   .info-grid {
-    gap: 15px;
+    gap: var(--space-2);
   }
 
   .info-item label {
-    font-size: 0.9rem;
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-1);
   }
 
   .info-item input {
-    padding: 10px 12px;
-    font-size: 0.9rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    min-height: 44px; /* Touch target size */
   }
 
   .preferences-grid {
-    gap: 15px;
+    gap: var(--space-2);
   }
 
   .preference-item {
-    padding: 15px;
+    padding: var(--space-2);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
   }
 
-  .preference-item h3 {
-    font-size: 1rem;
+  .preference-text {
+    font-size: var(--font-size-sm);
   }
 
-  .preference-item p {
-    font-size: 0.85rem;
+  .remove-preference {
+    width: 24px;
+    height: 24px;
+    font-size: var(--font-size-sm);
   }
 
   .progress-charts {
-    gap: 15px;
+    gap: var(--space-2);
+  }
+
+  .progress-card {
+    padding: var(--space-2);
+  }
+
+  .progress-card h4 {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
   }
 
   .chart-placeholder {
-    padding: 15px;
-  }
-
-  .chart-placeholder h3 {
-    font-size: 1rem;
-  }
-
-  .chart-placeholder p {
-    font-size: 0.8rem;
+    height: 80px;
+    margin-bottom: var(--space-2);
   }
 
   .trend-indicator {
-    padding: 12px 0;
+    padding: var(--space-2) 0;
+    gap: var(--space-2);
   }
 
   .trend-indicator span {
-    font-size: 1rem;
+    font-size: var(--font-size-sm);
   }
 
   .trend-indicator p {
-    font-size: 0.85rem;
+    font-size: var(--font-size-xs);
   }
 
   .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    min-height: 44px; /* Touch target size */
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .edit-actions {
+    flex-direction: column;
+    gap: var(--space-2);
   }
 }

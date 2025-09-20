@@ -302,12 +302,14 @@
 @media (max-width: 360px) {
   .nav-container {
     padding: 0 var(--space-2);
-    height: 60px;
+    height: 56px;
   }
   
   .nav-brand {
     font-size: var(--font-size-sm);
     gap: var(--space-1);
+    flex: 1;
+    justify-content: center;
   }
   
   .nav-logo {
@@ -316,20 +318,61 @@
   
   .mobile-menu-button {
     padding: var(--space-1);
+    position: absolute;
+    right: var(--space-2);
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .hamburger,
   .hamburger::before,
   .hamburger::after {
-    width: 20px;
+    width: 18px;
     height: 2px;
   }
   
   .hamburger::before {
-    top: -6px;
+    top: -5px;
   }
   
   .hamburger::after {
-    bottom: -6px;
+    bottom: -5px;
+  }
+  
+  /* Mobile menu optimizations */
+  .mobile-menu {
+    top: 56px;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .mobile-nav-menu {
+    padding: var(--space-3);
+  }
+  
+  .mobile-nav-link {
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
+  }
+  
+  .mobile-nav-link .nav-icon {
+    font-size: var(--font-size-base);
+  }
+  
+  .mobile-nav-link .nav-label {
+    font-size: var(--font-size-sm);
+  }
+  
+  .mobile-signout-btn {
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+  
+  .mobile-signout-btn .nav-icon {
+    font-size: var(--font-size-base);
+  }
+  
+  .mobile-signout-btn .nav-label {
+    font-size: var(--font-size-sm);
   }
 }

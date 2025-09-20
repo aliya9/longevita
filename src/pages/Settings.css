@@ -355,105 +355,120 @@
 /* Samsung Galaxy S8+ Specific Optimizations (360x740) */
 @media (max-width: 360px) {
   .settings-content {
-    padding: 0 10px;
+    padding: 0 var(--space-2);
   }
 
   .settings-header {
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    justify-content: center;
   }
 
   .settings-actions {
-    gap: 6px;
-  }
-
-  .settings-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .settings-header p {
-    font-size: 0.9rem;
+    gap: var(--space-1);
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .settings-section {
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
   }
 
-  .settings-section h2 {
-    font-size: 1.25rem;
+  .settings-section h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
   }
 
   .tab-navigation {
-    gap: 10px;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
   }
 
   .tab-button {
-    padding: 10px 15px;
-    font-size: 0.85rem;
-    min-width: 100px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+    min-width: 80px;
+    flex: 1;
   }
 
   .setting-item {
-    padding: 15px;
-    gap: 15px;
+    padding: var(--space-3) 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
   }
 
-  .setting-info h3 {
-    font-size: 1rem;
+  .setting-info {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .setting-info label {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
   }
 
   .setting-info p {
-    font-size: 0.85rem;
+    font-size: var(--font-size-xs);
+    line-height: 1.3;
   }
 
-  .setting-control {
-    min-width: 100px;
+  .toggle-switch {
+    width: 50px;
+    height: 28px;
+    align-self: flex-end;
+  }
+
+  .slider:before {
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+  }
+
+  .toggle-switch input:checked + .slider:before {
+    transform: translateX(22px);
   }
 
   .setting-select {
-    padding: 8px 10px;
-    font-size: 0.9rem;
-    min-width: 100px;
-  }
-
-  .setting-toggle {
-    width: 40px;
-    height: 24px;
-  }
-
-  .setting-toggle::before {
-    width: 18px;
-    height: 18px;
-  }
-
-  .setting-toggle:checked::before {
-    transform: translateX(16px);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    min-width: 120px;
+    min-height: 44px; /* Touch target size */
   }
 
   .danger-zone {
-    padding: 15px;
+    padding: var(--space-3);
+    border-width: 1px;
   }
 
   .danger-zone h3 {
-    font-size: 1.25rem;
-  }
-
-  .danger-zone p {
-    font-size: 0.9rem;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
   }
 
   .danger-actions {
-    gap: 10px;
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
   .danger-note {
-    padding: 12px;
-    font-size: 0.85rem;
+    padding: var(--space-2);
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-2);
   }
 
   .btn {
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    min-height: 44px; /* Touch target size */
+    width: 100%;
+  }
+
+  .btn-secondary {
+    margin-top: var(--space-2);
   }
 }
