@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-// AWS Amplify auth removed in UI-only build
+import { useNavigate } from 'react-router-dom';
 import './Authentication.css';
 
-const Authentication = ({ onSignIn }) => {
+const Authentication = () => {
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -37,18 +38,15 @@ const Authentication = ({ onSignIn }) => {
     setError('');
     setSuccess('');
 
-    try {
-      await signIn({ username: signInData.email, password: signInData.password });
+    // Simulate loading
+    setTimeout(() => {
       setSuccess('Welcome back! Signing you in...');
-      // Call the callback to update the parent component
-      if (onSignIn) {
-        onSignIn();
-      }
-    } catch (error) {
-      setError(error.message || 'Failed to sign in. Please try again.');
-    } finally {
       setIsLoading(false);
-    }
+      // Navigate to dashboard after 1 second
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    }, 1500);
   };
 
   const handleSignUp = async (e) => {
@@ -69,26 +67,15 @@ const Authentication = ({ onSignIn }) => {
       return;
     }
 
-    try {
-      await signUp({
-        username: signUpData.email,
-        password: signUpData.password,
-        options: {
-          userAttributes: {
-            email: signUpData.email,
-            given_name: signUpData.firstName,
-            family_name: signUpData.lastName
-          }
-        }
-      });
-      setSuccess('Account created successfully! Please check your email for verification code.');
-      setConfirmationData({ ...confirmationData, email: signUpData.email });
-      setShowConfirmation(true);
-    } catch (error) {
-      setError(error.message || 'Failed to create account. Please try again.');
-    } finally {
+    // Simulate loading
+    setTimeout(() => {
+      setSuccess('Account created successfully! Welcome to Longevita!');
       setIsLoading(false);
-    }
+      // Navigate to dashboard after 1 second
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    }, 1500);
   };
 
   const handleConfirmation = async (e) => {
@@ -97,19 +84,13 @@ const Authentication = ({ onSignIn }) => {
     setError('');
     setSuccess('');
 
-    try {
-      await confirmSignUp({
-        username: confirmationData.email,
-        confirmationCode: confirmationData.code
-      });
+    // Simulate loading
+    setTimeout(() => {
       setSuccess('Email verified successfully! You can now sign in.');
+      setIsLoading(false);
       setShowConfirmation(false);
       setIsSignUp(false);
-    } catch (error) {
-      setError(error.message || 'Failed to verify email. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    }, 1500);
   };
 
   const handleResendCode = async () => {
@@ -117,14 +98,11 @@ const Authentication = ({ onSignIn }) => {
     setError('');
     setSuccess('');
 
-    try {
-      await resendSignUpCode({ username: confirmationData.email });
+    // Simulate loading
+    setTimeout(() => {
       setSuccess('Verification code resent! Please check your email.');
-    } catch (error) {
-      setError(error.message || 'Failed to resend code. Please try again.');
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const resetForm = () => {
@@ -371,8 +349,15 @@ const Authentication = ({ onSignIn }) => {
             type="button"
             className="btn btn-social btn-google"
             onClick={() => {
-              // Handle Google sign in
-              console.log('Google sign in clicked');
+              // Simulate Google sign in
+              setIsLoading(true);
+              setTimeout(() => {
+                setSuccess('Signed in with Google! Welcome to Longevita!');
+                setIsLoading(false);
+                setTimeout(() => {
+                  navigate('/');
+                }, 1000);
+              }, 1500);
             }}
           >
             <span className="social-icon">🔍</span>
@@ -383,8 +368,15 @@ const Authentication = ({ onSignIn }) => {
             type="button"
             className="btn btn-social btn-apple"
             onClick={() => {
-              // Handle Apple sign in
-              console.log('Apple sign in clicked');
+              // Simulate Apple sign in
+              setIsLoading(true);
+              setTimeout(() => {
+                setSuccess('Signed in with Apple! Welcome to Longevita!');
+                setIsLoading(false);
+                setTimeout(() => {
+                  navigate('/');
+                }, 1000);
+              }, 1500);
             }}
           >
             <span className="social-icon">🍎</span>

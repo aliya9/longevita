@@ -58,11 +58,10 @@ const Navigation = ({ user, signOut }) => {
 
         {/* User Section */}
         <div className="nav-user">
-          <div className="user-info">
-            <span className="user-avatar">👤</span>
-            <span className="user-name">{user?.username || 'User'}</span>
-          </div>
-          <button onClick={handleSignOut} className="btn btn-ghost btn-sm">
+          <button 
+            onClick={() => navigate('/login')} 
+            className="btn btn-primary btn-sm"
+          >
             Sign Out
           </button>
         </div>
@@ -101,7 +100,13 @@ const Navigation = ({ user, signOut }) => {
             ))}
             <li className="mobile-nav-divider"></li>
             <li>
-              <button onClick={handleSignOut} className="mobile-signout-btn">
+              <button 
+                onClick={() => {
+                  navigate('/login');
+                  setIsMobileMenuOpen(false);
+                }} 
+                className="mobile-nav-link"
+              >
                 <span className="nav-icon">🚪</span>
                 <span className="nav-label">Sign Out</span>
               </button>

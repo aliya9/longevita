@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 // aws-exports removed
 import Navigation from './components/Navigation';
 import Chatbot from './components/Chatbot';
+import Authentication from './components/Authentication';
 import Home from './pages/Home';
 import Journal from './pages/Journal';
 import Community from './pages/Community';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
-// Authentication removed (no auth in UI-only build)
 import './styles/design-system.css';
 import './App.css';
 
@@ -40,6 +40,7 @@ function App() {
         
         <main className="app-main">
           <Routes>
+            <Route path="/login" element={<Authentication />} />
             <Route path="/" element={<Home />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/community" element={<Community />} />
